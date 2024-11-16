@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padoru Token</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: #f44336;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .banner {
+            max-width: 100%;
+            height: auto;
+        }
+        .countdown {
+            margin: 2rem auto;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .buttons {
+            margin: 1.5rem 0;
+        }
+        button {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0.5rem;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #d32f2f;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        .images-section img, .gif-section video {
+            max-width: 300px;
+            height: auto;
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Padoru Token: $PADORU</h1>
+    </header>
+
+    <img class="banner" src="Padoru Banner.webp" alt="Padoru Banner">
+
+    <div class="countdown">
+        <p>Launch Countdown:</p>
+        <div id="countdown-timer">Loading...</div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="copyToClipboard('FPGxqCERdUS9bhPMU8SNRLjET8AE4tPw2EyYGJr7sz61')">Copy Presale Wallet</button>
+        <button onclick="copyToClipboard('GTcboZdXT1fWGECXqNpgtgT5T32LNBCVYa8xTPL1XsiN')">Copy Donation Wallet</button>
+    </div>
+
+    <div class="images-section">
+        <h2>Padoru Images</h2>
+        <img src="Padoru PFP.jpg" alt="Padoru NFT">
+    </div>
+
+    <div class="gif-section">
+        <h2>Padoru in Action</h2>
+        <video controls>
+            <source src="PadoruGif.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>Check Transactions:</h3>
+        <a href="https://explorer.solana.com/address/FPGxqCERdUS9bhPMU8SNRLjET8AE4tPw2EyYGJr7sz61?cluster=mainnet" target="_blank">View Presale Transactions</a>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://t.me/PadoruOnSol" target="_blank">Telegram</a>
+            <a href="https://x.com/PadoruOnSol" target="_blank">X (Twitter)</a>
+        </div>
+        <p>&copy; 2024 Padoru Token. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
+            });
+        }
+
+        function startCountdown() {
+            const launchDate = new Date("2024-12-01T00:00:00Z");
+            const timer = document.getElementById("countdown-timer");
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeLeft = launchDate - now;
+
+                if (timeLeft <= 0) {
+                    timer.textContent = "Padoru Token is LIVE!";
+                    clearInterval(interval);
+                    return;
+                }
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                timer.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+
+            updateCountdown();
+            const interval = setInterval(updateCountdown, 1000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+</html>
